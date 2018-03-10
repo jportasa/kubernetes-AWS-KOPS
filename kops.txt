@@ -1,7 +1,9 @@
-
-
+#Init vars
 
 export KOPS_STATE_STORE=s3://state-k8s
+
+#Create Cluster
+
 kops create cluster \
     --node-count 3 \
     --master-count 1 \
@@ -13,5 +15,8 @@ kops create cluster \
     --networking kopeio-vxlan \
     myfirstcluster.k8s.local \
     --yes
+
+# Destroy cluster
+kops delete cluster myfirstcluster.k8s.local --yes
 
 
