@@ -1,0 +1,17 @@
+
+
+
+export KOPS_STATE_STORE=s3://state-k8s
+kops create cluster \
+    --node-count 3 \
+    --master-count 1 \
+    --zones us-east-1a,us-east-1b,us-east-1c \
+    --master-zones us-east-1a \
+    --node-size t2.micro \
+    --master-size t2.medium \
+    --topology private \
+    --networking kopeio-vxlan \
+    myfirstcluster.k8s.local \
+    --yes
+
+

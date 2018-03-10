@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+        containers:
+        - name: web-nginx
+          image: nginx:latest
+          ports:
+          - containerPort: 80
+          volumeMounts:
+          - mountPath: /test-ebs
+            name: test-volume
+        volumes:
+        - name:  test-volume
+          persistentVolumeClaim:
+            claimName:  myclaim
+
