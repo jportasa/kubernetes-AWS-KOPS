@@ -1,5 +1,7 @@
 #Init vars
 
+export DOMAIN="myfirstcluster.jporta.es"
+#export DOMAIN="myfirstcluster.k8s.local"
 export KOPS_STATE_STORE=s3://state-k8s
 
 #Create Cluster
@@ -10,13 +12,13 @@ kops create cluster \
     --zones us-east-1a,us-east-1b,us-east-1c \
     --master-zones us-east-1a \
     --node-size t2.micro \
-    --master-size t2.medium \
+    --master-size t2.micro \
     --topology public \
     --networking kopeio-vxlan \
-    myfirstcluster.k8s.local \
+    $DOMAIN \
     --yes
 
 # Destroy cluster
-kops delete cluster myfirstcluster.k8s.local --yes
+kops delete cluster $DOMAIN --yes
 
 
