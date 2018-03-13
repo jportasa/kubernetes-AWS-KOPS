@@ -12,3 +12,17 @@ spec:
         backend:
           serviceName: nginx
           servicePort: 80
+  - host: node1.jporta.es
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: nginx
+          servicePort: 80
+  - host: node2.jporta.es
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: nginx
+          servicePort: 80
